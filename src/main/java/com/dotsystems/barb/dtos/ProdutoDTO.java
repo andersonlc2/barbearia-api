@@ -1,10 +1,14 @@
 package com.dotsystems.barb.dtos;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.NotBlank;
 
 import com.dotsystems.barb.entities.Produto;
 
-public class ProdutoDTO {
+public class ProdutoDTO  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	@NotBlank

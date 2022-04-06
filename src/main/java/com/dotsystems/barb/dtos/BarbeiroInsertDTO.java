@@ -1,11 +1,15 @@
 package com.dotsystems.barb.dtos;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.dotsystems.barb.entities.Barbeiro;
 
-public class BarbeiroInsertDTO {
+public class BarbeiroInsertDTO  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@NotBlank
 	private String nome;

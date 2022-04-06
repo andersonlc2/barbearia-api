@@ -1,10 +1,13 @@
 package com.dotsystems.barb.dtos;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import com.dotsystems.barb.entities.Horario;
 
-public class HorarioDTO {
+public class HorarioDTO  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 

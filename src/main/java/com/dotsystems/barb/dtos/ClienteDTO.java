@@ -1,5 +1,6 @@
 package com.dotsystems.barb.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.Email;
@@ -7,8 +8,10 @@ import javax.validation.constraints.NotBlank;
 
 import com.dotsystems.barb.entities.Cliente;
 
-public class ClienteDTO {
+public class ClienteDTO  implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@NotBlank
 	private Long id;
 	@NotBlank

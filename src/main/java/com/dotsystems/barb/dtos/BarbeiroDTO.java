@@ -1,5 +1,6 @@
 package com.dotsystems.barb.dtos;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +11,10 @@ import com.dotsystems.barb.entities.Barbeiro;
 import com.dotsystems.barb.entities.Equipe;
 import com.dotsystems.barb.entities.HorarioBarbeiro;
 
-public class BarbeiroDTO {
+public class BarbeiroDTO implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 
 	@NotBlank

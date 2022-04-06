@@ -1,5 +1,6 @@
 package com.dotsystems.barb.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -18,7 +19,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "tb_categoria")
 @SequenceGenerator(name = "CATEGORIA_SEQ", initialValue = 1, allocationSize = 1)
-public class Categoria {
+public class Categoria implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATEGORIA_SEQ")

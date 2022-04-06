@@ -1,9 +1,13 @@
 package com.dotsystems.barb.dtos;
 
+import java.io.Serializable;
+
 import com.dotsystems.barb.entities.Horario;
 import com.dotsystems.barb.entities.HorarioBarbeiro;
 
-public class HorarioBarbeiroDTO {
+public class HorarioBarbeiroDTO  implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Horario horario;
 	private Integer status;

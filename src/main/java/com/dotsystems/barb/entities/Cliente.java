@@ -1,5 +1,6 @@
 package com.dotsystems.barb.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_cliente")
 @SequenceGenerator(name = "CLIENTE_SEQ", initialValue = 1, allocationSize = 1)
-public class Cliente {
+public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTE_SEQ")

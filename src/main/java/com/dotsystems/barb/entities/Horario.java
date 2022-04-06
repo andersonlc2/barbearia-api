@@ -1,5 +1,6 @@
 package com.dotsystems.barb.entities;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Objects;
@@ -19,7 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "tb_horario")
 @SequenceGenerator(name = "HORARIO_SEQ", initialValue = 1, allocationSize = 1)
-public class Horario {
+public class Horario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HORARIO_SEQ")
