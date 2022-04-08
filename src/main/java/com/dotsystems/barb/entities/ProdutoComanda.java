@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.dotsystems.barb.entities.pk.ProdutoComandaPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_produto_comanda")
@@ -32,6 +33,7 @@ public class ProdutoComanda implements Serializable {
 		this.valor = valor;
 	}
 
+	@JsonIgnore
 	public Comanda getComanda() {
 		return id.getComanda();
 	}
@@ -44,7 +46,7 @@ public class ProdutoComanda implements Serializable {
 		return id.getProduto();
 	}
 
-	public void SetProduto(Produto produto) {
+	public void setProduto(Produto produto) {
 		id.setProduto(produto);
 	}
 
@@ -62,6 +64,10 @@ public class ProdutoComanda implements Serializable {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+	
+	public Double getSubTotal() {
+		return quantidade * valor;
 	}
 
 	@Override

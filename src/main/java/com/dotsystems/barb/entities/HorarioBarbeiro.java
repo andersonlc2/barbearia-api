@@ -1,10 +1,13 @@
 package com.dotsystems.barb.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.dotsystems.barb.entities.enums.StatusHorario;
@@ -21,6 +24,10 @@ public class HorarioBarbeiro implements Serializable {
 	private StatusPk id = new StatusPk();
 
 	private Integer status;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "horarioBarb")
+	private Set<Agendamento> agendamentos = new HashSet<>();
 
 	public HorarioBarbeiro() {
 
@@ -57,6 +64,10 @@ public class HorarioBarbeiro implements Serializable {
 
 	public void setHorario(Horario horario) {
 		id.setHorario(horario);
+	}
+
+	public Set<Agendamento> getAgendamentos() {
+		return agendamentos;
 	}
 
 	@Override

@@ -21,6 +21,7 @@ public class ProdutoDTO  implements Serializable {
 	private Long fornecedor;
 
 	private Integer categoria;
+	
 
 	public ProdutoDTO() {
 
@@ -66,6 +67,7 @@ public class ProdutoDTO  implements Serializable {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+	
 
 	public Long getFornecedor() {
 		return fornecedor;
@@ -82,5 +84,6 @@ public class ProdutoDTO  implements Serializable {
 	public void setCategoria(Integer categoria) {
 		this.categoria = categoria;
 	}
+
 
 }

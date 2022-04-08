@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.dotsystems.barb.dtos.ComandaDTO;
 import com.dotsystems.barb.entities.Comanda;
+import com.dotsystems.barb.entities.enums.StatusComanda;
 import com.dotsystems.barb.repositories.ComandaRepository;
 
 @Service
@@ -22,6 +23,7 @@ public class ComandaService {
 	@Transactional
 	public ComandaDTO save(ComandaDTO obj) {
 		var comanda = new Comanda();
+		comanda.setStatus(StatusComanda.valueOf(obj.getStatus()));
 		BeanUtils.copyProperties(obj, comanda);
 		repository.save(comanda);
 		return new ComandaDTO(comanda);
@@ -31,8 +33,9 @@ public class ComandaService {
 	public ComandaDTO update(Long id, ComandaDTO obj) {
 		var comanda = repository.findById(id).get();
 		comanda.setData(obj.getData());
-		// CONTINUAR AQUI 
-		
+		comanda.setAgendamentoId(obj.getAgendamentoId());
+		comanda.setData(obj.getData());
+		comanda.setStatus(StatusComanda.valueOf(obj.getStatus()));
 		return new ComandaDTO(comanda);
 	}
 

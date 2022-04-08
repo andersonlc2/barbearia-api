@@ -92,6 +92,18 @@ public class Comanda implements Serializable {
 	public Set<ServicoComanda> getServicos() {
 		return servicos;
 	}
+	
+	public Double getTotalComanda() {
+		double soma = 0;
+		for (ProdutoComanda produto : produtos) {
+			soma += produto.getSubTotal();
+		}
+		for (ServicoComanda servico : servicos) {
+			soma += servico.getSubTotal();
+		}
+		
+		return soma;
+	}
 
 	@Override
 	public int hashCode() {

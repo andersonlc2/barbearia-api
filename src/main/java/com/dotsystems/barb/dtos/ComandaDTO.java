@@ -16,6 +16,7 @@ public class ComandaDTO implements Serializable {
 	private Long agendamentoId;
 	private Date data;
 	private Integer status;
+	private Double total;
 
 	private Set<ProdutoComanda> produtos;
 
@@ -32,6 +33,7 @@ public class ComandaDTO implements Serializable {
 		this.status = obj.getStatus().getCode();
 		this.produtos = obj.getProdutos();
 		this.servicos = obj.getServicos();
+		this.total = obj.getTotalComanda();
 	}
 
 	public Long getId() {
@@ -80,6 +82,14 @@ public class ComandaDTO implements Serializable {
 
 	public void setServicos(Set<ServicoComanda> servicos) {
 		this.servicos = servicos;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
 	}
 
 }

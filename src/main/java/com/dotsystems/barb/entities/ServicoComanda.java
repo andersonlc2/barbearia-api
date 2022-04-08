@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.dotsystems.barb.entities.pk.ServicoComandaPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_servico_comanda")
@@ -32,6 +33,7 @@ public class ServicoComanda implements Serializable {
 		this.valor = valor;
 	}
 
+	@JsonIgnore
 	public Comanda getComanda() {
 		return id.getComanda();
 	}
@@ -62,6 +64,10 @@ public class ServicoComanda implements Serializable {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+	
+	public Double getSubTotal() {
+		return quantidade * valor;
 	}
 
 	@Override

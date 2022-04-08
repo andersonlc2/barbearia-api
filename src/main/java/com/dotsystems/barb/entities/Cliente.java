@@ -2,7 +2,9 @@ package com.dotsystems.barb.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -38,6 +41,9 @@ public class Cliente implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
+
+	@OneToMany(mappedBy = "cliente")
+	private Set<Agendamento> agendamentos = new HashSet<>();
 
 	public Cliente() {
 
@@ -108,6 +114,10 @@ public class Cliente implements Serializable {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Set<Agendamento> getAgendamentos() {
+		return agendamentos;
 	}
 
 	@Override

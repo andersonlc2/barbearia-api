@@ -17,6 +17,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.dotsystems.barb.entities.enums.CategoriaProduto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_produto")
@@ -40,6 +41,7 @@ public class Produto implements Serializable {
 	private Fornecedor fornecedor;
 
 	@OneToMany(mappedBy = "id.produto")
+	@JsonIgnore
 	private Set<ProdutoComanda> produtos = new HashSet<>();
 
 	private CategoriaProduto categoria;
