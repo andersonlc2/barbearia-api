@@ -1,20 +1,17 @@
 package com.dotsystems.barb.dtos;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.dotsystems.barb.entities.Barbeiro;
 import com.dotsystems.barb.entities.Equipe;
-import com.dotsystems.barb.entities.HorarioBarbeiro;
 
 public class BarbeiroDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 
 	@NotBlank
@@ -33,8 +30,6 @@ public class BarbeiroDTO implements Serializable {
 	@NotBlank
 	private Equipe equipe;
 
-	private Set<HorarioBarbeiro> horarios = new HashSet<>();
-
 	public BarbeiroDTO() {
 
 	}
@@ -46,7 +41,6 @@ public class BarbeiroDTO implements Serializable {
 		this.email = obj.getEmail();
 		this.ativo = obj.getAtivo();
 		this.equipe = obj.getEquipe();
-		this.horarios = obj.getHorarios();
 	}
 
 	public Long getId() {
@@ -96,13 +90,4 @@ public class BarbeiroDTO implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
-
-	public Set<HorarioBarbeiro> getHorarios() {
-		return horarios;
-	}
-
-	public void setHorarios(Set<HorarioBarbeiro> horarios) {
-		this.horarios = horarios;
-	}
-
 }

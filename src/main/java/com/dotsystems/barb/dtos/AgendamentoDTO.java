@@ -25,7 +25,7 @@ public class AgendamentoDTO implements Serializable {
 		this.horario = obj.getHorarioBarb().getHorario().getId();
 		this.barbeiro = obj.getHorarioBarb().getBarbeiro().getId();
 		this.cliente = obj.getCliente().getId();
-		this.comanda = obj.getComanda();
+		this.comanda = obj.getComanda().getId();
 		this.status = obj.getHorarioBarb().getStatus();
 	}
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dotsystems.barb.dtos.ComandaDTO;
+import com.dotsystems.barb.dtos.ComandaSaveDTO;
 import com.dotsystems.barb.services.ComandaService;
 
 @Controller
@@ -29,7 +30,7 @@ public class ComandaResources {
 	private ComandaService service;
 
 	@PostMapping
-	public ResponseEntity<ComandaDTO> saveComanda(@RequestBody @Valid ComandaDTO obj) {
+	public ResponseEntity<ComandaSaveDTO> saveComanda(@RequestBody @Valid ComandaSaveDTO obj) {
 		service.save(obj);
 		return ResponseEntity.status(HttpStatus.CREATED).body(obj);
 	}

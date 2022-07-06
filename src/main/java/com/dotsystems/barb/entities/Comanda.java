@@ -6,12 +6,14 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,11 +30,12 @@ public class Comanda implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMANDA_SEQ")
 	private Long id;
 	@Column(nullable = false)
-	private Long agendamentoId;
-	@Column(nullable = false)
 	private Date data;
 	@Column(nullable = false)
 	private Integer status;
+
+	@OneToOne(mappedBy = "comanda", cascade = CascadeType.ALL)
+	private Agendamento agendamentoId;
 
 	@OneToMany(mappedBy = "id.comanda")
 	private Set<ProdutoComanda> produtos = new HashSet<>();
@@ -44,7 +47,7 @@ public class Comanda implements Serializable {
 
 	}
 
-	public Comanda(Long id, Long agendamentoId, Date data, Integer status) {
+	public Comanda(Long id, Agendamento agendamentoId, Date data, Integer status) {
 		this.id = id;
 		this.agendamentoId = agendamentoId;
 		this.data = data;
@@ -59,11 +62,11 @@ public class Comanda implements Serializable {
 		this.id = id;
 	}
 
-	public Long getAgendamentoId() {
+	public Agendamento getAgendamentoId() {
 		return agendamentoId;
 	}
 
-	public void setAgendamentoId(Long agendamentoId) {
+	public void setAgendamentoId(Agendamento agendamentoId) {
 		this.agendamentoId = agendamentoId;
 	}
 
@@ -92,7 +95,7 @@ public class Comanda implements Serializable {
 	public Set<ServicoComanda> getServicos() {
 		return servicos;
 	}
-	
+
 	public Double getTotalComanda() {
 		double soma = 0;
 		for (ProdutoComanda produto : produtos) {
@@ -101,7 +104,7 @@ public class Comanda implements Serializable {
 		for (ServicoComanda servico : servicos) {
 			soma += servico.getSubTotal();
 		}
-		
+
 		return soma;
 	}
 

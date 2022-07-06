@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,7 +25,8 @@ public class Agendamento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AGENDAMENTO_SEQ")
 	private Long id;
 
-	private Long comanda;
+	@OneToOne
+	private Comanda comanda;
 
 	@ManyToOne
 	@JoinColumns({ @JoinColumn(name = "horario_id"), @JoinColumn(name = "barb_id") })
@@ -38,7 +40,7 @@ public class Agendamento implements Serializable {
 
 	}
 
-	public Agendamento(Long id, Long comanda, HorarioBarbeiro horarioBarb, Cliente cliente) {
+	public Agendamento(Long id, Comanda comanda, HorarioBarbeiro horarioBarb, Cliente cliente) {
 		this.id = id;
 		this.comanda = comanda;
 		this.horarioBarb = horarioBarb;
@@ -53,11 +55,11 @@ public class Agendamento implements Serializable {
 		this.id = id;
 	}
 
-	public Long getComanda() {
+	public Comanda getComanda() {
 		return comanda;
 	}
 
-	public void setComanda(Long comanda) {
+	public void setComanda(Comanda comanda) {
 		this.comanda = comanda;
 	}
 

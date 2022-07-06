@@ -13,7 +13,6 @@ public class ComandaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private Long agendamentoId;
 	private Date data;
 	private Integer status;
 	private Double total;
@@ -28,7 +27,6 @@ public class ComandaDTO implements Serializable {
 
 	public ComandaDTO(Comanda obj) {
 		this.id = obj.getId();
-		this.agendamentoId = obj.getAgendamentoId();
 		this.data = obj.getData();
 		this.status = obj.getStatus().getCode();
 		this.produtos = obj.getProdutos();
@@ -42,14 +40,6 @@ public class ComandaDTO implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getAgendamentoId() {
-		return agendamentoId;
-	}
-
-	public void setAgendamentoId(Long agendamentoId) {
-		this.agendamentoId = agendamentoId;
 	}
 
 	public Date getData() {

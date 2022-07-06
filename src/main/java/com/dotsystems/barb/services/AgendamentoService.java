@@ -13,6 +13,7 @@ import com.dotsystems.barb.entities.HorarioBarbeiro;
 import com.dotsystems.barb.repositories.AgendamentoRepository;
 import com.dotsystems.barb.repositories.BarbeiroRepository;
 import com.dotsystems.barb.repositories.ClienteRepository;
+import com.dotsystems.barb.repositories.ComandaRepository;
 
 @Service
 public class AgendamentoService {
@@ -25,6 +26,9 @@ public class AgendamentoService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private ComandaRepository comandaRepository;
 
 	public AgendamentoDTO save(AgendamentoDTO obj) {
 		var agendamento = new Agendamento();
@@ -37,7 +41,7 @@ public class AgendamentoService {
 		}
 		agendamento.setHorarioBarb(hor);
 		agendamento.setCliente(clienteRepository.findById(obj.getCliente()).get());
-		agendamento.setComanda(obj.getComanda());
+		agendamento.setComanda(comandaRepository.findById(obj.getComanda()).get());
 
 		if (hor.getStatus().getCode() == 3) {
 			repository.save(agendamento);
@@ -50,6 +54,10 @@ public class AgendamentoService {
 
 	public List<AgendamentoDTO> findAll() {
 		return repository.findAll().stream().map(x -> new AgendamentoDTO(x)).collect(Collectors.toList());
+	}
+	
+	public AgendamentoDTO findById(Long id) {
+		return new AgendamentoDTO(repository.findById(id).get());
 	}
 
 }
